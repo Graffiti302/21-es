@@ -37,7 +37,6 @@ def kartya_keres():
         print("Akkor kapsz még kártyát!")
     szamok.append(random.randint(1,10))
     print(f"A következő számod:{szamok[2]}")
-    summa()
     kartya_keres()
 
 kartya_keres()
