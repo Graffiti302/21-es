@@ -30,6 +30,10 @@ def AI_game():
         summa()
         ellenorzes()
         kartya_keres()
+        if Valasztas == "Nem":
+            gép()
+
+
 
     def ellenorzes():
         if sum(szamok) == 21:
@@ -45,11 +49,23 @@ def AI_game():
         Gép_szamok = [random.randint(1, 10),random.randint(1,10)]
 
 
+        def gép_ellenőrzés():
+            if Gép_szamok < 16:
+                gép_plus()
+            Gép_osszeg = sum(Gép_szamok)
+            if Gép_osszeg < 16:
+                gép_plus()
 
 
-    def gép_summa():
-        Gép_osszeg = sum(Gép_szamok)
-    gép_summa()
+        def gép_plus():
+            Gép_szamok.append(random.randint(1, 10))
+            gép_summa()
+
+
+        def gép_summa():
+            Gép_osszeg = sum(Gép_szamok)
+            gép_ellenőrzés()
+        gép_ellenőrzés()
 
 
 
