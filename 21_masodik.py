@@ -42,3 +42,28 @@ def kartya_keres():
 kartya_keres()
 
 AI_game()
+
+
+
+
+
+
+
+
+
+    def gép():
+        Gép_szamok = [random.randint(1, 10),random.randint(1,10)]
+
+        def gép_plus():
+            Gép_szamok.append(random.randint(1,10))
+            gép_summa()
+
+        def gép_ellenőrzés():
+            if Gép_szamok < 16:
+                gép_plus()
+
+
+        def gép_summa():
+            Gép_osszeg = sum(Gép_szamok)
+            gép_ellenőrzés()
+        gép_ellenőrzés()
