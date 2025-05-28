@@ -82,7 +82,7 @@ AI_game()
 
 
 
-    def gép():
+def gép():
         Gép_szamok = [random.randint(1, 10),random.randint(1,10)]
 
         def gép_plus():
