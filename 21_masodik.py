@@ -7,10 +7,10 @@ print("Két számot kapsz 1-10-ig. Késöbb több számot is Kérhetsz.")
 print("Ha túllépsz a 21-es számon akkor vesztettél!")
 print("Kezdjük el!")
 print("----------------------------------------")
-szamok = [random.randint(1, 10,), random.randint(1, 10)]
-jatekosok = str(input("Hányan játszotok? Ai/egyedül:"))
 def AI_game():
-    if jatekosok == "Ai":
+    szamok = [random.randint(1, 10, ), random.randint(1, 10)]
+    jatekosok = str(input("Hányan játszotok? Gép/egyedül:"))
+    if jatekosok == "Gép":
         print(f"Az első számod:{szamok[0]}")
         print(f"A második számod: {szamok[1]}")
 
@@ -18,28 +18,59 @@ def AI_game():
         szam_osszeg = sum(szamok)
         print(f"A számaid összege:{szam_osszeg}")
     summa()
-def ellenorzes():
-    if sum(szamok) == 21:
-        print("Nyertél")
-    elif sum(szamok) > 21:
-        print("Vesztettél!")
-    Ujra = str(input("Akarsz újra játszani?: Igen/Nem"))
-    if Ujra == "Igen":
-        AI_game()
+
+    def kartya_keres():
+        Valasztas = str(input("Ha kérsz még egy kártyát írj <Igen> ha nem akkor <Nem>"))
+        if Valasztas != "Igen" or "Nem":
+            print("Ez nem választási lehetőség")
+        if Valasztas == "Igen":
+            print("Akkor kapsz még kártyát!")
+        szamok.append(random.randint(1, 10))
+        print(f"A következő számod:{szamok[2]}")
+        summa()
+        ellenorzes()
+        kartya_keres()
+        if Valasztas == "Nem":
+            gép()
 
 
 
-def kartya_keres():
-    Valasztas = str(input("Ha kérsz még egy kártyát írj <Igen> ha nem akkor <Nem>"))
-    if Valasztas != "Igen" or "Nem":
-        print("Ez nem választási lehetőség")
-    if Valasztas == "Igen":
-        print("Akkor kapsz még kártyát!")
-    szamok.append(random.randint(1,10))
-    print(f"A következő számod:{szamok[2]}")
+    def ellenorzes():
+        if sum(szamok) == 21:
+         print("Nyertél")
+        elif sum(szamok) > 21:
+            print("Vesztettél!")
+            Ujra = str(input("Akarsz újra játszani? Y/N:"))
+            if Ujra == "Y":
+                AI_game()
+
     kartya_keres()
+    def gép():
+        Gép_szamok = [random.randint(1, 10),random.randint(1,10)]
 
-kartya_keres()
+
+        def gép_ellenőrzés():
+            if Gép_szamok < 16:
+                gép_plus()
+            Gép_osszeg = sum(Gép_szamok)
+            if Gép_osszeg < 16:
+                gép_plus()
+
+
+        def gép_plus():
+            Gép_szamok.append(random.randint(1, 10))
+            gép_summa()
+
+
+        def gép_summa():
+            Gép_osszeg = sum(Gép_szamok)
+            gép_ellenőrzés()
+        gép_ellenőrzés()
+
+
+
+
+
 
 AI_game()
 
